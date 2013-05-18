@@ -1,27 +1,28 @@
-import tmxlib
+import tmx_adapter 
 import sfml as sf
 import viewport 
+import data_types
 
 class Map(object):
     
     def __init__(self, filename ):
-        self.tmx = tmxlib.Map.open(filename)
-        self.tile_size = self.tmx.tile_size
+        self.tmx_data = tmx_adapter.TmxDataProvider(filename)
+        self.tile_size = self.tmx_data.get_tile_size()
         self.sprites = {}
-        self.viewport = viewport.Viewport()
-        self.viewport.x_end = self.tmx.size[0]
-        self.viewport.y_end = self.tmx.size[1]
+        position = data_types.Position(0,0)
+        size = data_types.Size(self.tile_size[0], self.tile_size[1])
+        self.viewport = viewport.Viewport(position ,size )
         self.images_path = ''
     
     def render(self, context):
-        layer = self.tmx.layers['c2']
+        layer = self.tmx_data.get_layer('c2')
         self.render_layer(layer, context)
 
 
     def render_layer(self, layer, context):
-        for tx in xrange(self.viewport.x_start, self.viewport.x_end):
-            for ty in xrange(self.viewport.y_start, self.viewport.y_end):
-                tile = layer[tx,ty]
+        for tx in xrange(self.viewport.limits.x_start, self.viewport.limits.x_end):
+            for ty in xrange(self.viewport.limits.y_start, self.viewport.limits.y_end):
+                tile = self.tmx_data.get_tile(layer, {'x':tx,'y':ty})
                 self.render_tile(tile, context)
 
 

@@ -1,11 +1,21 @@
+import data_types
+
 class Viewport(object):
-    def __init__(self, limits = (0,0,0,0)):
-        self.x_start    = limits[0]
-        self.x_end      = limits[1]
-        self.y_start    = limits[2]
-        self.y_end      = limits[3]
+    def __init__(self, position  , size ):
+        self.position = position
+        self.size = size
+        self.limits = data_types.Limits((self.position.x,self.position.y,self.position.x + self.size.width ,self.position.y + self.size.height))
     
     def set_size(self, width, height):
-        self.x_end      = self.x_start + width
-        self.y_end      = self.y_start + height
+        self.size = size
         
+    def set_position(self, position):
+        self.position = position
+        
+    def set_position(self, x, y):
+        self.position.x = x
+        self.position.y = y
+        self.limits.set_limits((self.position.x,self.position.y,self.position.x + self.size.width ,self.position.y + self.size.height))
+        
+        return self.limits
+    
