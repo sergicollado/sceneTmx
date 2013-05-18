@@ -25,12 +25,15 @@ while window.is_open:
     # process events
     for event in window.events:
       # close window: exit
-      if type(event) is sf.CloseEvent:
-         window.close()
+        if type(event) is sf.CloseEvent:
+            window.close()
 
-    
-
+        if type(event) is sf.KeyEvent and event.code is sf.Keyboard.RIGHT:
+            map.cam.panning_right()
+        if type(event) is sf.KeyEvent and event.code is sf.Keyboard.LEFT:
+            map.cam.panning_left()
    
     window.clear() # clear screen
+    map.update()
     map.render(window)
     window.display() # update the window
