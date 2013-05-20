@@ -32,8 +32,13 @@ while window.is_open:
             map.cam.panning_right()
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.LEFT:
             map.cam.panning_left()
+        if type(event) is sf.KeyEvent and event.code is sf.Keyboard.UP:
+            map.cam.panning_top()
+        if type(event) is sf.KeyEvent and event.code is sf.Keyboard.DOWN:
+            map.cam.panning_down()
    
     window.clear() # clear screen
     map.update()
-    map.render(window)
+    map.render_from_layer(window,'c2')
+    map.render_from_layer(window,'collisions')
     window.display() # update the window
