@@ -15,7 +15,7 @@ class Map(object):
         
         self.size = self.tmx_data.get_map_size()
         self.sprites = drawables.Sprites()
-        self.cam = Camara(data_types.Position(0,0))
+        self.cam = Camera(data_types.Position(0,0))
         
         size = data_types.Size(self.size[0], self.size[1])
         self.viewport = viewport.Viewport(self.cam.get_position(), size )
@@ -51,8 +51,8 @@ class Map(object):
     
     def get_tile_position(self, tile):
         tile_position = tile.get_pixels_position()
-        return ( tile_position[0] - self.cam.x , tile_position[1] + self.cam.y )
+        return ( tile_position[0] - self.cam.position.x , tile_position[1] + self.cam.position.y )
 
     def update(self):
         self.cam.update()
-        self.viewport.set_pixels_position(self.cam.x, self.cam.y, self.tile_size)
+        self.viewport.set_pixels_position(self.cam.position, self.tile_size)

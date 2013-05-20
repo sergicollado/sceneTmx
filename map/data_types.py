@@ -1,5 +1,5 @@
 class Position:
-    def __init__(self, x, y):
+    def __init__(self, x = 0 , y= 0):
         self.x = x
         self.y = y
 
@@ -20,3 +20,9 @@ class Limits:
         self.x_end      = limits[1]
         self.y_start    = limits[2]
         self.y_end      = limits[3]
+        
+    def get_xend_limit(self):
+        return min(self.position.x + self.size.width, self.size.width-1)
+
+    def get_yend_limit(self):
+        return min(self.position.x + self.size.width, self.size.height-1)
