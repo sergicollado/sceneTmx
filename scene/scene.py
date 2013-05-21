@@ -54,5 +54,4 @@ class Scene(object):
 
     def update(self):
         self.cam.update()
-        print self.cam
-        self.viewport.set_pixels_position(copy.copy(self.cam.position), self.tile_size)
+        self.viewport.set_pixels_position(helpers.Position(self.cam.position.x,self.cam.position.y), self.tile_size)
