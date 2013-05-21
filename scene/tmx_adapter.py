@@ -35,6 +35,10 @@ class Tile:
             return True
         return False
     
+    def get_size(self):
+        size = self.rawtile.size
+        return Size(size[0], size[1])
+    
     def get_image_position(self):
         return self.rawtile.image.top_left
     

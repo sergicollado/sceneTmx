@@ -1,6 +1,7 @@
 import sfml as sf
-import scene
+from scene import *
 from config import *
+from scene.helpers import *
 
 # create the main window
 window = sf.RenderWindow(sf.VideoMode(1020, 600), "pySFML Window")
@@ -9,9 +10,8 @@ try:
     texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
     sprite = sf.Sprite(texture)
     
-    scene = scene.Scene(MAPS_PATH+"textMap.tmx")
-    scene.images_path = IMAGES_PATH
-
+    scene = Scene(MAPS_PATH+"textMap.tmx")
+    scene.set_images_path(IMAGES_PATH)
     
 except IOError: 
     print IOError

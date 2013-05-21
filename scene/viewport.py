@@ -23,3 +23,5 @@ class Viewport(object):
         self.position.x =  int(math.floor(position.x/tile_size.width))
         self.position.y = int(math.floor(position.y/tile_size.height))
         
+    def get_visibles_tiles(self):
+        return self.limits.get_positions_available()
