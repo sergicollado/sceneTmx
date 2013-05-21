@@ -13,15 +13,22 @@ class TmxDataProvider:
         return  Size(size[0],size[1])
     
     def get_layer(self, layer):
-        return self.tmx.layers[layer]
+        return Layer(layer, self.tmx)
     
     def get_tile(self, layer, position):
         tile = Tile(layer, position)
         return tile
     
+class Layer:
+    def __init__(self,layer_name, tmx):
+        self.rawlayer = tmx.layers[layer_name]
+    
+    def get_tile(self, position):
+        return self.rawlayer[position.x, position.y]
+        
 class Tile:
     def __init__(self, layer, position):
-        self.rawtile = layer[position.x, position.y]
+        self.rawtile = layer.get_tile(position)
         
     def is_empty(self):
         if not self.rawtile.image:
