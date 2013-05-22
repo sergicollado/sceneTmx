@@ -4,13 +4,17 @@ from config import *
 from scene.helpers import *
 
 # create the main window
+width = 1020
+height = 600
 window = sf.RenderWindow(sf.VideoMode(1020, 600), "pySFML Window")
+window.framerate_limit = 60
+window.vertical_synchronization = True
 
 try:
     texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
     sprite = sf.Sprite(texture)
     
-    scene = Scene(MAPS_PATH+"textMap.tmx")
+    scene = Scene(MAPS_PATH+"textMap.tmx", Size(width, height))
     scene.set_images_path(IMAGES_PATH)
     
 except IOError: 
@@ -25,7 +29,7 @@ while window.is_open:
     # process events
     for event in window.events:
       # close window: exit
-        if type(event) is sf.CloseEvent:
+        if type(event) is sf.CloseEvent or type(event) is sf.KeyEvent and event.code is sf.Keyboard.ESCAPE:
             window.close()
 
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.RIGHT:

@@ -6,7 +6,7 @@ class TmxDataProvider:
         self.tmx = tmxlib.Map.open(filename)
 
     def get_map_size(self):
-        return  self.tmx.size
+        return  Size(self.tmx.size[0],self.tmx.size[1])
 
     def get_tile_size(self):
         size = self.tmx.tile_size

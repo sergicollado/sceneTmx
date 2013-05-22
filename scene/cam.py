@@ -15,10 +15,10 @@ class Camera:
         self.speed.vertical_deceleration()
 
     def panning_top(self):
-        self.speed.horizontal_aceleration() 
+        self.speed.horizontal_deceleration() 
 
     def panning_down(self):
-        self.speed.horizontal_deceleration()
+        self.speed.horizontal_aceleration()
         
     def update(self):
         self.position.x += int(self.speed.velocity.vertical)

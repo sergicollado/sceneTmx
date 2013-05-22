@@ -1,15 +1,16 @@
 import helpers
 import math 
+import copy
 
 class Viewport(object):
-    def __init__(self, position  , size ):
+    def __init__(self, position  , limits ):
         self.position = position
-        self.size = size
-        self.limits = helpers.Limits(position, size)        
+        self.limits = limits    
         
-    def set_pixels_position(self,position, tile_size):
-        self.set_position_from_pixels(position, tile_size)
-        self.limits.set_position(self.position)
+    def set_cam_position(self,position, tile_size):
+        cam_position = helpers.Position(position.x,position.y)
+        self.set_position_from_pixels(cam_position, tile_size)
+        self.limits.set_position(copy.copy(self.position))
         
 
     def get_tile_position_from_pixels(self, coordinate, tile_size, max_tilesize):

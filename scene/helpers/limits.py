@@ -1,9 +1,11 @@
 from position import Position
 
 class Limits:
-    def __init__(self, position, size):
+    def __init__(self, position, map_size , window_size, tile_size):
         self.position = position
-        self.size = size
+        self.map_size = map_size
+        self.window_size = window_size
+        self.tile_size = tile_size
         
         self.x_start    = position.x
         self.x_end      = self.get_x_end_limit()
@@ -19,22 +21,36 @@ class Limits:
         self.y_end      = self.get_y_end_limit()
         
     def get_x_start_limit(self):
-        return min(self.position.x, self.size.width-1)
+        return min(self.position.x, self.map_size.width-1)
     
     def get_y_start_limit(self):
-        return min(self.position.y, self.size.height-1)
+        return min(self.position.y, self.map_size.height-1)
     
     def get_x_end_limit(self):
-        if(self.position.x + self.size.width < 0):
+        if(self.position.x + self.map_size.width < 0):
             return 0
-        return min(self.position.x + self.size.width, self.size.width-1)
+        return self.get_width_limit_by_windows_size()
 
     def get_y_end_limit(self):
-        if(self.position.y + self.size.height< 0):
+        if(self.position.y + self.map_size.height < 0):
             return 0
-        return min(self.position.y + self.size.height, self.size.height-1)
+        return self.get_height_limit_by_windows_size()
     
     def get_positions_available(self):
         return [Position(tx,ty) for tx in xrange(self.x_start, self.x_end) for ty in xrange(self.y_start, self.y_end)]
                 
-                
+    
+    def get_width_limit_by_windows_size(self):
+        size_by_window =  self.position.x + int(self.window_size.width/self.tile_size.width) + 1
+        limit_by_map = self.map_size.width-1
+        
+        return min(size_by_window, limit_by_map)
+    
+    def get_height_limit_by_windows_size(self):
+        size_by_window =  self.position.y + int(self.window_size.height/self.tile_size.height)
+        limit_by_map = self.map_size.height-1
+        print self.position.y , size_by_window , limit_by_map
+        
+        return min(size_by_window, limit_by_map)
+    
+    

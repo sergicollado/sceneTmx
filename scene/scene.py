@@ -1,5 +1,4 @@
 import tmx_adapter 
-import sfml as sf
 from viewport import Viewport 
 from helpers import *
 import drawables
@@ -8,7 +7,7 @@ import renderer
 
 class Scene(object):
     
-    def __init__(self, filename ):
+    def __init__(self, filename, windows_size ):
         self.tmx_data = tmx_adapter.TmxDataProvider(filename)
         self.tile_size = self.tmx_data.get_tile_size()
         
@@ -17,8 +16,8 @@ class Scene(object):
         
         self.renderer = renderer.sfml_renderer()
         
-        size = Size(self.size[0], self.size[1])
-        self.viewport = Viewport(Position(0,0), size )
+        viewport_limit = Limits(Position(0,0), self.size, windows_size, self.tile_size)
+        self.viewport = Viewport(Position(0,0),  viewport_limit)
     
     def set_camera(self, camera):
         self.camera = camera
@@ -39,4 +38,4 @@ class Scene(object):
 
     def update(self):
         self.cam.update()
-        self.viewport.set_pixels_position(self.cam.get_position(), self.tile_size)
+        self.viewport.set_cam_position(self.cam.get_position(), self.tile_size)
