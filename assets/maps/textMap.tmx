@@ -4,13 +4,19 @@
   <image source="twilight-tiles.png" width="256" height="256"/>
  </tileset>
  <layer name="c1" width="100" height="100">
+  <properties>
+   <property name="distance" value="1"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt0cEJADAIA0Bncf8hXSJUKXeQd9BUAQAAAAAAAAAAAAAAAAAAAPBCh7LRfUnqj4m7Nnqv7wMAAAAAAAAAAAAAAAAAAAAAAAAAAAA/GGkSCZE=
+   eJzt07EJACAMBEBnEdx/RUvBQoKKitzBl4HwISkBAAAAAAAAADCrdKHpuzkVAACYkQNZnd+Vn+3q+6QXdmAschv/d4+uAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBXVddtDp0=
   </data>
  </layer>
  <layer name="c2" width="100" height="100">
+  <properties>
+   <property name="distance" value="0.9"/>
+  </properties>
   <data encoding="base64" compression="zlib">
-   eJzt07EJACAMBEBnEdx/RUvBQoKKitzBl4HwISkBAAAAAAAAADCrdKHpuzkVAACYkQNZnd+Vn+3q+6QXdmAschv/d4+uAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIBXVddtDp0=
+   eJzt1sdNRTEQhtFXG6kAUgGkAkgFkAogFUCqk3/ruxvJEozuOdK3G3njseTNBgAAAAAA+GtbaTvtpN20N2G2ciaj/XSQDtNROp4wWzmT0Uk6TWfpPF1MmK2cyegyXaXrdJNuJ8xWzmR0l+7TQ3pMTxNmK2cyek4v6TW9pfcJs5UzGX2kz/SVvtPPhNnKmWvgv/m/dPlvrmVvuvw3q3vT9f66/Dere9Pl3S91+W9W96bLu1/q8t+s7k2Xd7/U5b9Z3Zsu776r6t50efdr0eXdAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAWv0CCtRfKQ==
   </data>
  </layer>
  <layer name="collisions" width="100" height="100">

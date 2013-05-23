@@ -4,6 +4,7 @@ from helpers import *
 import drawables
 from cam import *
 import renderer
+import layers
 
 class Scene(object):
     
@@ -18,6 +19,16 @@ class Scene(object):
         
         viewport_limit = Limits(Position(0,0), self.size, windows_size, self.tile_size)
         self.viewport = Viewport(Position(0,0),  viewport_limit)
+        
+        self.visible_layers = [
+            {'name':'c1' , 'distance': 1},
+            {'name':'c2' , 'distance': 0.9},
+            ]
+        
+    
+    def render(self , context):
+        for layer in self.visible_layers:
+            self.render_from_layer(context, layer)
     
     def set_camera(self, camera):
         self.camera = camera
@@ -25,17 +36,27 @@ class Scene(object):
     def set_images_path(self, path):
         self.renderer.set_images_path(path)
         
-    def render_from_layer(self, context, layer_name):
-        layer = self.tmx_data.get_layer(layer_name)
-        self.render_layer(layer, context)
+    def render_from_layer(self, context, layer):
+        tmx_layer = self.tmx_data.get_layer(layer['name'])
+        tmx_layer.set_distance(layer['distance'])
+        self.render_layer(tmx_layer, context)
 
 
     def render_layer(self, layer, context):
+        layer_position = self.get_position_from_layer(layer)
+        self.viewport.set_layer_position(layer_position, self.tile_size)
         for position in self.viewport.get_visibles_tiles():
-                tile = self.tmx_data.get_tile(layer, position)
-                self.renderer.render_tile(tile, self.cam.get_position(), context)
+            tile = self.tmx_data.get_tile(layer, position)
+            self.renderer.render_tile(tile, layer_position , context)
 
 
+    def get_position_from_layer(self, layer):
+        camera_position = self.cam.get_position()
+        distance_factor = layer.get_distance_factor()
+        return Position(camera_position.x * distance_factor , camera_position.y * distance_factor) 
+        
+    
+    
     def update(self):
         self.cam.update()
-        self.viewport.set_cam_position(self.cam.get_position(), self.tile_size)
+        

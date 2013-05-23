@@ -23,7 +23,7 @@ class sfml_renderer:
     
     def get_tile_position(self, tile, position):
         tile_position = tile.get_pixels_position()
-        return ( tile_position.x - position.x , tile_position.y + position.y )
+        return ( tile_position.x - position.x , tile_position.y - position.y )
 
     def set_images_path(self, path):
         self.images_path = path

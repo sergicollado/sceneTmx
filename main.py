@@ -43,6 +43,5 @@ while window.is_open:
    
     window.clear() # clear screen
     scene.update()
-    scene.render_from_layer(window,'c2')
-    scene.render_from_layer(window,'collisions')
+    scene.render(window)
     window.display() # update the window

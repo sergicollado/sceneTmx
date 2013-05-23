@@ -7,7 +7,7 @@ class Viewport(object):
         self.position = position
         self.limits = limits    
         
-    def set_cam_position(self,position, tile_size):
+    def set_layer_position(self,position, tile_size):
         cam_position = helpers.Position(position.x,position.y)
         self.set_position_from_pixels(cam_position, tile_size)
         self.limits.set_position(copy.copy(self.position))

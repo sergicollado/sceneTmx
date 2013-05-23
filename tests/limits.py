@@ -27,27 +27,41 @@ class TestLimits(unittest.TestCase):
     
     def test_window_size_should_set_limit(self):
         x_limit = self.limits.get_x_end_limit()
-        limit_by_window = int( self.size_window.width/self.tile_size.width ) + self.cam_position.x
+        limit_by_window = int( self.size_window.width/self.tile_size.width ) + self.cam_position.x+1
         
         self.assertLess(x_limit,self.size_map.width )
         self.assertEqual(x_limit,limit_by_window )
-    #def test_when_panning_should_change_position(self):
-        #self.camera.speed.aceleration = 2
-        #self.camera.panning_right()
-        #self.camera.update()
         
-        #self.assertEqual(self.position.x, 2 )
-       
-        #self.camera.panning_left()
-        #self.camera.update()
+    def test_start_limit_when_is_out_in_negative_position(self):
+        out_range_position = Position(-100,-100)
+        limits= Limits( out_range_position, self.size_map , self.size_window , self.tile_size )
+    
+        x_start_limit = limits.get_x_start_limit()
+        self.assertEqual(x_start_limit, 0)
+
+        y_start_limit = limits.get_y_start_limit()
+        self.assertEqual(y_start_limit, 0)
         
-        #self.assertEqual(self.position.x, 1 )
+    def test_start_limit_when_is_out_in_positive_position(self):
+        out_range_position = Position(+100,+100)
+        limits= Limits( out_range_position, self.size_map , self.size_window , self.tile_size )
     
-        #self.camera.panning_top()
-        #self.camera.update()
+        x_start_limit = limits.get_x_start_limit()
+        self.assertEqual(x_start_limit, 100)
+
+        y_start_limit = limits.get_y_start_limit()
+        self.assertEqual(y_start_limit, 100)
+        
+    def test_end_limit_when_is_out_of_range(self):
+        out_range_position = Position(100,100)
+        limits= Limits( out_range_position, self.size_map , self.size_window , self.tile_size )
     
-        #self.assertEqual(self.position.y, 2 )
-    
+        x_start_limit = limits.get_x_end_limit()
+        self.assertEqual(x_start_limit, 99)
+
+        y_start_limit = limits.get_y_end_limit()
+        self.assertEqual(y_start_limit, 99)
+        
 
     
 if __name__ == '__main__' :

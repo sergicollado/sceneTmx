@@ -22,9 +22,15 @@ class TmxDataProvider:
 class Layer:
     def __init__(self,layer_name, tmx):
         self.rawlayer = tmx.layers[layer_name]
-    
+        self.distance = 1
+    def set_distance(self, distance):
+        self.distance = distance
+        
     def get_tile(self, position):
         return self.rawlayer[position.x, position.y]
+    
+    def get_distance_factor(self):
+        return self.distance
         
 class Tile:
     def __init__(self, layer, position):
