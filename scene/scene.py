@@ -21,8 +21,8 @@ class Scene(object):
         self.viewport = Viewport(Position(0,0),  viewport_limit)
         
         self.visible_layers = [
+            {'name':'c2' , 'distance': 0.8},
             {'name':'c1' , 'distance': 1},
-            {'name':'c2' , 'distance': 0.9},
             ]
         
     
