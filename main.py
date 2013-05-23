@@ -17,6 +17,8 @@ try:
     scene = Scene(MAPS_PATH+"textMap.tmx", Size(width, height))
     scene.set_images_path(IMAGES_PATH)
     
+    player = Character(IMAGES_PATH+"mikeypebalz.png", Size(57,101))
+    
 except IOError: 
     print IOError
     exit(1)
@@ -34,8 +36,10 @@ while window.is_open:
 
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.RIGHT:
             scene.cam.panning_right()
+            player.horizontal_aceleration()
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.LEFT:
             scene.cam.panning_left()
+            player.horizontal_deceleration()
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.UP:
             scene.cam.panning_top()
         if type(event) is sf.KeyEvent and event.code is sf.Keyboard.DOWN:
@@ -44,4 +48,6 @@ while window.is_open:
     window.clear() # clear screen
     scene.update()
     scene.render(window)
+    player.update()
+    player.render(window)
     window.display() # update the window

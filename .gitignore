@@ -1,2 +1,5 @@
 *.pyc
-*~V
+*~
+*.swp
+.project
+.pydevproject

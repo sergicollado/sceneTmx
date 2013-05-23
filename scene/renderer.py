@@ -1,5 +1,6 @@
 import sfml as sf
 import drawables
+import helpers
 
 class sfml_renderer:
     def __init__(self):
@@ -24,6 +25,31 @@ class sfml_renderer:
     def get_tile_position(self, tile, position):
         tile_position = tile.get_pixels_position()
         return ( tile_position.x - position.x , tile_position.y - position.y )
+
+    def set_images_path(self, path):
+        self.images_path = path
+        
+
+class SfmlCharacterRenderer:
+    def __init__(self, filename, tile_size):
+        self.sprites = drawables.Sprites()
+        self.sprite = self.sprites.get_sprite(filename)
+        self.tile_size = tile_size
+        self.image_position = (0,0)
+        self.set_image_sprite_appropiate()
+        self.position = helpers.Position(0,0)
+        self.sprite.position = (self.position.x, self.position.y) 
+        
+    def set_position(self, position):
+        self.position = position
+        self.sprite.position = (self.position.x, self.position.y) 
+    
+    def set_image_sprite_appropiate(self):
+        self.sprite.texture_rectangle = sf.Rectangle( self.image_position, (self.tile_size.width, self.tile_size.height))
+    
+    def render(self, context):
+        context.draw(self.sprite)
+
 
     def set_images_path(self, path):
         self.images_path = path

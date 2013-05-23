@@ -4,7 +4,6 @@ from helpers import *
 import drawables
 from cam import *
 import renderer
-import layers
 
 class Scene(object):
     
