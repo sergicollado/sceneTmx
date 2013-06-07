@@ -3,8 +3,8 @@ import unittest
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../scene'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../scene/helpers'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../renderer'))
 
 from config import *
 from scene import *
@@ -12,7 +12,7 @@ from scene import *
 class TestCharacter(unittest.TestCase):
 
     def setUp(self):
-        self.character = Character()
+        self.character = Character( IMAGES_PATH+"mikeypebalz.png",Size(57,101))
     
     def test_intialitation_camera(self):
         self.assertIsInstance(self.character, Character)

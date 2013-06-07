@@ -4,7 +4,7 @@ import sure
 import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../scene'))
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../scene/helpers'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../helpers'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from config import *
@@ -20,7 +20,7 @@ class TestCamera(unittest.TestCase):
         self.assertIsInstance(self.camera, Camera)
         
     def test_when_panning_should_change_position(self):
-        self.camera.speed.aceleration = 2
+        self.camera.physical_object.aceleration = 2
         self.camera.panning_right()
         self.camera.update()
         
