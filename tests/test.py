@@ -13,7 +13,7 @@ from scene import *
 class TesTing(unittest.TestCase):
 
     def setUp(self):
-        self.scene = Scene(MAPS_PATH+"textMap.tmx")
+        self.scene = Scene(MAPS_PATH+"textMap.tmx", Size(800, 600))
         self.scene.images_path = IMAGES_PATH
     
     def test_entorno(self):

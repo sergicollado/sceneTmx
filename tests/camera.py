@@ -27,14 +27,15 @@ class TestCamera(unittest.TestCase):
         self.assertEqual(self.position.x, 2 )
        
         self.camera.panning_left()
+        self.camera.panning_left()
         self.camera.update()
         
-        self.assertEqual(self.position.x, 1 )
+        self.assertEqual(self.position.x, 0 )
     
         self.camera.panning_top()
         self.camera.update()
     
-        self.assertEqual(self.position.y, 2 )
+        self.assertEqual(self.position.y, -2 )
     
 
     

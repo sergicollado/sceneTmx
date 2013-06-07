@@ -1,4 +1,4 @@
-from speed import * 
+from physical_object import * 
 from velocity import * 
 from position import *
 from size import *

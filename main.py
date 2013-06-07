@@ -4,9 +4,9 @@ from config import *
 from scene.helpers import *
 
 # create the main window
-width = 1020
-height = 600
-window = sf.RenderWindow(sf.VideoMode(1020, 600), "pySFML Window")
+width = 1900
+height = 820
+window = sf.RenderWindow(sf.VideoMode(width, height), "pySFML Window")
 window.framerate_limit = 60
 window.vertical_synchronization = True
 
@@ -14,7 +14,7 @@ try:
     texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
     sprite = sf.Sprite(texture)
     
-    scene = Scene(MAPS_PATH+"textMap.tmx", Size(width, height))
+    scene = Scene(MAPS_PATH+"textMap.tmx", width, height)
     scene.set_images_path(IMAGES_PATH)
     
     player = Character(IMAGES_PATH+"mikeypebalz.png", Size(57,101))
