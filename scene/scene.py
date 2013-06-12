@@ -25,6 +25,9 @@ class Scene(object):
             ]
         
     
+    def set_visible_layers(self, visible_layers):
+        self.visible_layers = visible_layers
+        
     def render(self , context):
         for layer in self.visible_layers:
             self._render_from_layer(context, layer)

@@ -1,5 +1,3 @@
-from drawables import * 
-from renderer import * 
 from position import * 
 from size import * 
 from velocity import * 

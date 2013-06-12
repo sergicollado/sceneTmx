@@ -2,7 +2,7 @@ import sfml as sf
 import drawables
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../scene/helpers'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../'))
 import helpers
 
 
