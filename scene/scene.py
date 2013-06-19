@@ -1,4 +1,3 @@
-import tmx_adapter 
 from viewport import Viewport 
 from helpers import *
 from cam import *
@@ -7,7 +6,7 @@ import renderer
 class Scene(object):
     
     def __init__(self, filename, windows_width, window_height ):
-        self.tmx_data = tmx_adapter.TmxDataProvider(filename)
+        self.tmx_data = helpers.TmxDataProvider(filename)
         self.tile_size = self.tmx_data.get_tile_size()
         
         self.size = self.tmx_data.get_map_size()

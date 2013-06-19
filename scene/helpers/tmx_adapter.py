@@ -1,5 +1,6 @@
 import tmxlib
-from helpers import  *
+from size import Size
+from position import Position
 
 class TmxDataProvider:
     def __init__(self,filename):
