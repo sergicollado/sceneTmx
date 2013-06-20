@@ -25,7 +25,8 @@ try:
     #a string for setting the Path of your images
     	
     scene.set_visible_layers =  [{'name':'c1' , 'distance': 1}]				 
-    #set visible layers of scene with a list, distance key is a multiplier for the parallax layer displacement 
+    #set visible layers of scene with a list, 
+    #distance key is a multiplier for the parallax layer displacement 
     
 except IOError: 
     print IOError
