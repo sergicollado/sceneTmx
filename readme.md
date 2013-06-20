@@ -4,6 +4,10 @@
 ## Synopsis
 Simple library to render tiled tmx maps with python-sfm library.
 
+## Dependencies
+python library tmxlib
+pip install tmxlib
+
 ## Code Example
 ```python
 from character import Character
