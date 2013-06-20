@@ -34,7 +34,7 @@ except IOError:
 ```
 
 ## Motivation
-Create a tool in to create tiled based games with python sfml binding.
+Create a tool in order to make tiled based games with python-sfml.
 
 ## Installation
 Insert scene package in your game folder structure, and import.
