@@ -5,14 +5,14 @@ import renderer
 
 class Scene(object):
     
-    def __init__(self, filename, windows_width, window_height ):
+    def __init__(self, filename, windows_width, window_height, sprites ):
         self.tmx_data = helpers.TmxDataProvider(filename)
         self.tile_size = self.tmx_data.get_tile_size()
         
         self.size = self.tmx_data.get_map_size()
         self.cam = Camera(Position(0,0))
         
-        self.renderer = renderer.sfml_renderer()
+        self.renderer = renderer.sfml_renderer(sprites)
         
         windows_size = Size(windows_width, window_height)
         viewport_limit = Limits(Position(0,0), self.size, windows_size, self.tile_size)
@@ -24,8 +24,9 @@ class Scene(object):
             ]
         
     
-    def set_visible_layers(self, visible_layers):
-        self.visible_layers = visible_layers
+    def set_visible_layers(self, layers):
+        print layers
+        self.visible_layers = layers
         
     def render(self , context):
         for layer in self.visible_layers:

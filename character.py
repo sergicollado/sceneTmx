@@ -2,10 +2,11 @@ from helpers import *
 import renderer
 
 class Character:
-    def __init__(self, filename, tilesize):
+    def __init__(self, filename, tile_width, tile_height, sprites):
         self.position = Position(0,0)
         self.physical_object = PhysicalObject()
-        self.renderer = renderer.SfmlCharacterRenderer( filename, tilesize)
+        tilesize = Size(tile_width, tile_height)
+        self.renderer = renderer.SfmlCharacterRenderer( filename, tilesize, sprites)
 
     def render(self, context):
         self.renderer.render(context)

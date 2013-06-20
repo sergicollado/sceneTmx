@@ -1,29 +1,29 @@
-import sfml as sf
-from scene import *
 from config import *
-from scene.helpers import *
+import sfml as sf
+
+from character import Character
+import scene
+from scene.renderer import drawables
 
 # create the main window
-width = 1900
-height = 820
-window = sf.RenderWindow(sf.VideoMode(width, height), "pySFML Window")
+width = 800
+height = 600
+window = sf.RenderWindow(sf.VideoMode(width, height), "Scene Test")
 window.framerate_limit = 60
 window.vertical_synchronization = True
 
 try:
-    texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
-    sprite = sf.Sprite(texture)
     
-    scene = Scene(MAPS_PATH+"textMap.tmx", width, height)
+    sprites = drawables.Sprites()
+    scene = scene.Scene(MAPS_PATH+"textMap.tmx", width, height, sprites)
     scene.set_images_path(IMAGES_PATH)
+    scene.set_visible_layers =  [{'name':'c1' , 'distance': 1}]
     
-    player = Character(IMAGES_PATH+"mikeypebalz.png", Size(57,101))
+    player = Character(IMAGES_PATH+"mikeypebalz.png", 57, 101, sprites)
     
 except IOError: 
     print IOError
     exit(1)
-
-
 
 
 # start the game loop

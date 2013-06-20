@@ -7,8 +7,8 @@ import helpers
 
 
 class sfml_renderer:
-    def __init__(self):
-        self.sprites = drawables.Sprites()
+    def __init__(self, sprites):
+        self.sprites = sprites
         self.images_path = ''
         
     def render_tile(self, tile, position, context ): 
@@ -35,8 +35,8 @@ class sfml_renderer:
         
 
 class SfmlCharacterRenderer:
-    def __init__(self, filename, tile_size):
-        self.sprites = drawables.Sprites()
+    def __init__(self, filename, tile_size, sprites):
+        self.sprites = sprites
         self.sprite = self.sprites.get_sprite(filename)
         self.tile_size = tile_size
         self.image_position = (0,0)
