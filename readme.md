@@ -33,6 +33,8 @@ except IOError:
     print IOError
     exit(1)
 
+# render the map
+    scene.render(window)
 ```
 
 ## Motivation

@@ -1,5 +1,7 @@
 import sfml as sf
-from scene import *
+
+import scene
+import character
 from config import *
 from scene.renderer import drawables
 
@@ -21,7 +23,7 @@ try:
     texture = sf.Texture.from_file(IMAGES_PATH+"twilight-tiles.png")
     
     sprites = drawables.Sprites()
-    scene = Scene(MAPS_PATH+"textMap.tmx", width, height, sprites)
+    scene = scene.Scene(MAPS_PATH+"textMap.tmx", width, height, sprites)
     scene.set_images_path(IMAGES_PATH)
     layers = [
         {'name':'c2' , 'distance': 0.8},
@@ -30,7 +32,7 @@ try:
     scene.set_visible_layers(layers)
 
     
-    player = Character(IMAGES_PATH+"mikeypebalz.png", 57,101, sprites)
+    player = character.Character(IMAGES_PATH+"mikeypebalz.png", 57,101, sprites)
     player.set_velocity(10)
 except IOError: 
     print IOError
@@ -75,7 +77,7 @@ while window.is_open:
         player.horizontal_deceleration() 
     if(pressed_button_top):
         scene.cam.panning_top()
-    if(pressed_button_do    wn):
+    if(pressed_button_down):
         scene.cam.panning_down()
 
     time  = clock.restart().seconds*10
