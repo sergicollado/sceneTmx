@@ -16,6 +16,11 @@ try:
     sprites = drawables.Sprites()
     scene = Scene(MAPS_PATH+"textMap.tmx", width, height, sprites)
     scene.set_images_path(IMAGES_PATH)
+    layers = [
+        {'name':'c2' , 'distance': 0.8},
+        {'name':'c1' , 'distance': 1},
+    ]
+    scene.set_visible_layers(layers)
 
     
     player = Character(IMAGES_PATH+"mikeypebalz.png", 57,101, sprites)

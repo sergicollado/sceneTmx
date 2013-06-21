@@ -18,14 +18,10 @@ class Scene(object):
         viewport_limit = Limits(Position(0,0), self.size, windows_size, self.tile_size)
         self.viewport = Viewport(Position(0,0),  viewport_limit)
         
-        self.visible_layers = [
-            {'name':'c2' , 'distance': 0.8},
-            {'name':'c1' , 'distance': 1},
-            ]
+        self.visible_layers = []
         
     
     def set_visible_layers(self, layers):
-        print layers
         self.visible_layers = layers
         
     def render(self , context):
