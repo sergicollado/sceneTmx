@@ -55,6 +55,6 @@ class Scene(object):
         
     
     
-    def update(self):
-        self.cam.update()
+    def update(self, dt):
+        self.cam.update(dt)
         

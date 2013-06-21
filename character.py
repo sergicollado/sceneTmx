@@ -17,9 +17,9 @@ class Character:
     def horizontal_deceleration(self):
         self.physical_object.horizontal_deceleration()
         
-    def update(self):
-        self.physical_object.update()
-        self.position.x += int(self.physical_object.velocity.horizontal)
+    def update(self,dt):
+        self.physical_object.update(dt)
+        self.position.x += self.physical_object.velocity.horizontal * dt
         self.renderer.set_position(self.position)
         
     def set_velocity (self, velocity):

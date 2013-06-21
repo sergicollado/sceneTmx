@@ -3,9 +3,9 @@ from velocity import *
 class PhysicalObject:
     def __init__(self):
         self.velocity = Velocity()
-        self.maxim_velocity = 2 
+        self.maxim_velocity = 20
         self.friction_reduction = 0.8
-        self.aceleration = 2
+        self.aceleration = 10
         
     def vertical_aceleration(self):
         self.velocity.vertical += self.aceleration
@@ -24,17 +24,17 @@ class PhysicalObject:
         self.velocity.vertical = 0
         self.velocity.horizontal = 0
         
-    def update(self):
-        self._reduce_vertical_speed()
-        self._reduce_horizontal_speed()
+    def update(self,dt):
+        self._reduce_vertical_speed(dt)
+        self._reduce_horizontal_speed(dt)
      
-    def _reduce_vertical_speed(self):
+    def _reduce_vertical_speed(self,dt):
         if(abs(self.velocity.vertical) > 0):
-            self.velocity.vertical *= self.friction_reduction
+            self.velocity.vertical *= self.friction_reduction*dt
          
-    def _reduce_horizontal_speed(self):
+    def _reduce_horizontal_speed(self,dt):
         if(abs(self.velocity.horizontal) > 0):
-            self.velocity.horizontal *= self.friction_reduction 
+            self.velocity.horizontal *= self.friction_reduction *dt
 
     def __str__(self):
         return 'velocity: '+self.velocity+' maxim_velocity: '+self.maxim_velocity+ ' aceleraction: '+self.aceleration

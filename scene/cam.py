@@ -24,10 +24,10 @@ class Camera:
         self.position = position
         self.physical_object.reset()
         
-    def update(self):
-        self.position.x += int(self.physical_object.velocity.horizontal)
-        self.position.y += int(self.physical_object.velocity.vertical)
-        self.physical_object.update()
+    def update(self, dt):
+        self.position.x += self.physical_object.velocity.horizontal * dt
+        self.position.y += self.physical_object.velocity.vertical * dt
+        self.physical_object.update(dt)
 
     
     def __str__(self):
